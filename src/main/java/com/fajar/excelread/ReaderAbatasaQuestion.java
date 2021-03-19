@@ -9,23 +9,20 @@ import java.util.List;
 
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.apache.poi.ss.usermodel.Cell;
-import org.apache.poi.ss.usermodel.CellStyle;
-import org.apache.poi.ss.usermodel.Font;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.ss.usermodel.WorkbookFactory;
 import org.apache.poi.xssf.usermodel.XSSFCell;
 import org.apache.poi.xssf.usermodel.XSSFCellStyle;
-import org.apache.poi.xssf.usermodel.XSSFFont;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 public class ReaderAbatasaQuestion {
-	static final String INPUT_DIR = "E:\\Activity\\ABATASA\\";
-	static final String RAW_FILE = "RAW_SOAL_SEMIFINAL.xlsx";
-	static final String OUTPUT_FILE = "OUTPUT_SOAL_SEMIINAL.xls";
+	public static final String INPUT_DIR = "E:\\Activity\\ABATASA\\";
+	public static final String RAW_FILE = "RAW_SOAL_SEMIFINAL.xlsx";
+	public static final String OUTPUT_FILE = "OUTPUT_SOAL_SEMIINAL.xls";
 	private static Workbook inputWorkbook;
 	private static XSSFWorkbook outputXwb ;
 	private static LinkedList<Question> questions;
@@ -105,7 +102,7 @@ public class ReaderAbatasaQuestion {
 
 	}
 
-	private static Question getQuestion(final int i, Row row, List<Row> rowList) {
+	public static Question getQuestion(final int i, Row row, List<Row> rowList) {
 		Cell cell = row.getCell(0);
 		String statement = cell.getStringCellValue().split("\\.")[1];
 		Row choiceRow = rowList.get(i + 1);
@@ -145,13 +142,13 @@ public class ReaderAbatasaQuestion {
 		return c;
 	}
 
-	private static boolean printChoice(Cell cell) {
+	public static boolean printChoice(Cell cell) {
 		XSSFCellStyle style = (XSSFCellStyle) cell.getCellStyle();
 
 		return style.getFont().getBold();
 	}
 
-	private static <T> List<T> toList(Iterator<T> it) {
+	public static <T> List<T> toList(Iterator<T> it) {
 		List<T> list = new LinkedList<T>();
 		while (it.hasNext()) {
 			list.add(it.next());
